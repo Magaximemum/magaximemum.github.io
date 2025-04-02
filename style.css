@@ -12,13 +12,14 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #4888cc; /* Синий фон меню */
+    background-color: #006f8e; /* Синий фон меню */
     padding: 15px 20px;  /* Добавлен отступ слева и справа */
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-right: 30px; /* Добавляем отступ справа */
+    box-sizing: border-box; /* Учитываем padding в ширину */
 }
 
 .fixed-nav .logo {
@@ -38,12 +39,15 @@ body {
     font-weight: bold;
 }
 
+/* Центрируем пункты меню */
 .fixed-nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 15px; /* Добавим пространство между пунктами меню */
+    gap: 30px; /* Увеличиваем отступ между пунктами меню */
+    flex-grow: 1; /* Заставляем меню расти и занимать доступное пространство */
+    justify-content: center; /* Центрируем пункты меню */
 }
 
 .fixed-nav ul li {
@@ -54,17 +58,59 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
+    padding: 10px 20px; /* Добавляем внутренние отступы для улучшения кликабельности */
+    position: relative; /* Для создания эффекта подчеркивания */
+    transition: all 0.3s ease; /* Плавный переход для эффекта при наведении */
 }
 
+/* Эффект при наведении */
+.fixed-nav ul li a::after {
+    content: ''; /* Добавляем псевдоэлемент для линии */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #fff;
+    transition: all 0.3s ease; /* Плавное расширение линии */
+}
+
+/* Эффект при наведении */
+.fixed-nav ul li a:hover {
+    color: #ffcc00; /* Изменение цвета текста при наведении */
+}
+
+.fixed-nav ul li a:hover::after {
+    width: 100%; /* Расширение линии по всей ширине при наведении */
+}
+
+/* Номер телефона */
 .fixed-nav .contact-info {
     color: white;
     font-size: 18px;
+    margin-left: auto; /* Отодвигаем номер телефона вправо */
+    padding-right: 20px; /* Добавляем отступ справа */
 }
 
 .fixed-nav .contact-info a {
     color: white;
     margin-left: 10px;
     text-decoration: none;
+}
+
+#menu {
+    display: flex;
+    color: white;
+    font-size: 0px;
+    list-style: none;
+    gap: 30px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.menu-toggle, .menu-toggle-checkbox {
+    display: none;
+    color: white; 
 }
 
 /* Блок "Баннер" */
@@ -82,6 +128,7 @@ body {
     align-items: center;
     gap: 40px;
     flex-wrap: wrap; /* чтобы не ломалось на узких экранах */
+    padding-left: 120px;
 }
 
 .banner-box {
@@ -92,6 +139,7 @@ body {
     margin: 0 auto;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px); /* Для поддержки размытия */
+    margin-top: 50px;
 }
 
 .banner-box h2 {
@@ -304,28 +352,12 @@ p {
     color: #007BFF; /* Синий цвет для выделенного текста */
 }
 
-/* Адаптивность для мобильных экранов */
-@media (max-width: 768px) {
-    .service-item-inline {
-        text-align: center; /* Центрируем содержимое на мобильных устройствах */
-    }
-
-    .service-text {
-        width: 100%; /* Убираем ширину и центрируем текст */
-        margin-bottom: 20px;
-        text-align: center; /* Центрируем текст на мобильных устройствах */
-    }
-
-    .service-image-inline {
-        width: 80%; /* Увеличиваем размер изображения на мобильных устройствах */
-    }
-}
 
 
 /* Стили для секции "Путешествуйте к своей мечте" */
 #services-3 {
     padding: 50px 20px;
-    background-color: #f9ffc0; /* Мягкий розовый фон */
+    background-color: #D9F2F6; /
     text-align: center;
 }
 
@@ -362,27 +394,10 @@ p {
     color: #007BFF; /* Синий цвет для выделенного текста */
 }
 
-/* Адаптивность для мобильных экранов */
-@media (max-width: 768px) {
-    .service-item-flex {
-        flex-direction: column; /* Изменяем направление на колонку на мобильных устройствах */
-        align-items: center;
-    }
-
-    .service-text {
-        width: 100%; /* Убираем ширину и центрируем текст */
-        margin-bottom: 20px;
-        text-align: center; /* Центрируем текст на мобильных устройствах */
-    }
-
-    .service-image-flex {
-        width: 80%; /* Увеличиваем размер изображения на мобильных устройствах */
-    }
-}
 
 /* Новости */
 #news {
-    background-color: #E0F7FA; /* Светлый фон */
+    background-color: #e1f7f1; /* Светлый фон */
     padding: 50px 20px;
     text-align: center;
 }
@@ -419,7 +434,7 @@ p {
 
 .news-item p {
     font-size: 16px;
-    color: #555;
+    color: #333333;
     margin-bottom: 20px;
 }
 
@@ -437,18 +452,6 @@ p {
     background-color: #007BFF; /* Синий при наведении */
 }
 
-/* Адаптивность: на малых экранах (до 768px) */
-@media (max-width: 768px) {
-    .news-item {
-        width: calc(50% - 20px); /* 2 колонки на экранах меньше 768px */
-    }
-}
-
-@media (max-width: 480px) {
-    .news-item {
-        width: 100%; /* 1 колонка на экранах меньше 480px */
-    }
-}
 
 /* Основные стили для секции контактов */
 #contacts {
@@ -542,21 +545,6 @@ p {
     border: none;
 }
 
-/* Адаптивность для мобильных экранов */
-@media (max-width: 768px) {
-    .contact-content {
-        flex-direction: column; /* Размещаем форму и карту вертикально */
-        align-items: center;
-    }
-
-    .contact-form {
-        width: 100%; /* Форма занимает всю ширину на мобильных устройствах */
-    }
-
-    .contact-map {
-        width: 100%; /* Карта занимает всю ширину на мобильных устройствах */
-    }
-}
 
 /* Стили для кнопки "Наверх" */
 #back-to-top {
@@ -580,16 +568,377 @@ p {
     transform: scale(1.1); /* Увеличение размера кнопки при наведении */
 }
 
-/* Иконка внутри кнопки */
 #back-to-top i {
     font-size: 24px; /* Размер иконки */
 }
 
 
-/* Футер */
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #2e3b4e;
     text-align: center;
+    color: white;
     padding: 15px 0;
 }
+
+
+/* Стили для мобильных устройств и адаптации */
+
+@media (max-width: 1024px) {
+    .menu-toggle, .menu-toggle-checkbox {
+        display: none;
+
+    /* Уменьшаем размер шрифта в меню для планшетов */
+    .fixed-nav ul li a {
+        font-size: 16px;
+    }
+
+    /* Скрыть меню и показывать гамбургер для планшетов и мобильных */
+    .fixed-nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 28px; /* Увеличиваем размер иконки на планшетах */
+    }
+
+    /* Скрываем меню, но показываем при активации чекбокса */
+    #menu {
+        display: none;
+    }
+
+    .menu-toggle-checkbox:checked + .menu-toggle + #menu {
+        display: block;
+    }
+
+        #menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: #006f8e;
+        text-align: center;
+    }
+
+    #menu.visible {
+        display: block;
+    }
+
+    #menu li {
+        padding: 15px;
+        border-bottom: 1px solid #fff;
+    }
+
+    #menu li a {
+        font-size: 18px;
+        color: white;
+        display: block;
+        padding: 10px 20px;
+    }
+
+
+    /* Центрируем контент на странице */
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Стили для баннера */
+    #banner {
+        padding: 100px 20px; /* Уменьшаем верхний отступ */
+    }
+
+    .banner-content {
+        display: flex;
+        flex-direction: column; /* Располагаем содержимое в колонку */
+        justify-content: center; /* Центрируем элементы по вертикали */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        gap: 20px; /* Уменьшаем промежуток между колонками */
+        text-align: center; /* Выравнивание текста по центру */
+        padding-left: 0px;
+    }
+
+    /* Карточка с текстом */
+    .banner-box {
+        max-width: 100%; /* Задаем максимальную ширину 100% */
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        text-align: center; /* Центрируем текст */
+        margin-top: 0px;
+        
+    }
+
+    .earth {
+        width: 150px; /* Уменьшаем размер планеты */
+        height: 150px; /* Уменьшаем высоту планеты */
+        top: 40%; /* Сдвигаем планету ниже */
+    }
+
+    .airplane {
+        width: 20px; /* Уменьшаем размер самолетика */
+        height: 20px; /* Уменьшаем высоту самолетика */
+        top: 90%; /* Сдвигаем самолетик ниже */
+        right: 110%; /* Позиционируем самолетик ближе к центру */
+        transform-origin: 120px 0; /
+    }
+}
+
+/* Стиль для мобильных устройств (экран меньше 768px) */
+@media (max-width: 805px) {
+    /* Скрываем пункты меню и показываем гамбургер */
+    .fixed-nav ul {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 28px; 
+    }
+
+    /* Стили для иконки гамбургера */
+    .menu-toggle-checkbox {
+        display: none;
+    }
+
+    /* Показать меню при активном чекбоксе */
+    .menu-toggle-checkbox:checked + .menu-toggle {
+        display: block;
+    }
+
+    #menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background-color: #006f8e;
+        text-align: center;
+    }
+
+    #menu.visible {
+        display: block;
+    }
+
+    #menu li {
+        padding: 15px;
+        border-bottom: 1px solid #fff;
+    }
+
+    #menu li a {
+        font-size: 18px;
+        color: white;
+        display: block;
+        padding: 10px 20px;
+    }
+
+    .contact-info{
+        display: none;
+    }
+
+    /* Уменьшаем шрифт заголовков на мобильных устройствах */
+    h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    /* Уменьшаем размеры блоков с текстом и картинками */
+    .service-item {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .service-item p {
+        font-size: 14px;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #007BFF;
+    }
+
+    /* Блоки с картинками в секциях становятся гибкими */
+    .service-item-inline {
+        display: block;
+        text-align: center;
+    }
+
+    .service-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .service-image-inline {
+        width: 100%;
+        height: auto;
+    }
+
+    .service-item-flex {
+        flex-direction: column;
+        text-align: justify;
+    }
+
+    .service-image-flex {
+        width: 80%;
+        height: auto;
+    }
+
+    /* Новости: 2 колонки для экранов менее 768px */
+    .news-item {
+        width: 100%; /* Каждая новость будет занимать всю ширину */
+    }
+
+    .contact-form {
+        width: 100%;
+        padding-right: 10px;
+    }
+
+    .contact-map iframe {
+        height: 500px;
+        padding-right: 10px;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    /* Стили для баннера */
+    #banner {
+        padding: 100px 20px; /* Уменьшаем верхний отступ */
+    }
+
+    .banner-content {
+        display: flex;
+        flex-direction: column; /* Располагаем содержимое в колонку */
+        justify-content: center; /* Центрируем элементы по вертикали */
+        align-items: center; /* Центрируем элементы по горизонтали */
+        gap: 20px; /* Уменьшаем промежуток между колонками */
+        text-align: center; /* Выравнивание текста по центру */
+        padding-left: 0px;
+    }
+
+    /* Карточка с текстом */
+    .banner-box {
+        max-width: 100%; /* Задаем максимальную ширину 100% */
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(8px);
+        border-radius: 20px;
+        text-align: center; /* Центрируем текст */
+        margin-top: 0px;
+    }
+
+    /* Изображение планеты */
+    .earth {
+        width: 150px; /* Уменьшаем размер планеты */
+        height: 150px; /* Уменьшаем высоту планеты */
+        top: 40%; /* Сдвигаем планету ниже */
+    }
+
+    /* Изображение самолетика */
+    .airplane {
+        width: 20px; /* Уменьшаем размер самолетика */
+        height: 20px; /* Уменьшаем высоту самолетика */
+        top: 90%; /* Сдвигаем самолетик ниже */
+        right: 110%; /* Позиционируем самолетик ближе к центру */
+        transform-origin: 120px 0; /
+    }
+}
+
+/* Стиль для маленьких экранов (менее 480px) */
+@media (max-width: 480px) {
+    .contact-info{
+        display: none;
+    }
+    /* Пункт меню и иконка гамбургера */
+    .menu-toggle {
+        font-size: 24px; /* Уменьшаем размер иконки гамбургера */
+    }
+
+    .menu-toggle-checkbox:checked + .menu-toggle {
+        display: block;
+    }
+
+    /* Стили для скрытия меню на мобильных */
+    #menu {
+        display: none;
+    }
+
+    /* Показ меню при чекбоксе */
+    .menu-toggle-checkbox:checked + .menu-toggle + #menu {
+        display: block;
+    }
+
+    /* Новое оформление для маленьких экранов */
+    .news-item {
+        width: 100%; /* Каждая новость будет занимать всю ширину на маленьких экранах */
+        padding: 10px;
+    }
+
+    .news-item h2 {
+        font-size: 18px;
+    }
+
+    .news-item p {
+        font-size: 14px;
+    }
+
+    .button {
+        font-size: 14px; /* Уменьшаем размер шрифта кнопок */
+        padding: 8px 20px;
+    }
+
+    /* Контактная форма и карта адаптируются */
+    .contact-form button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+    /* Для заголовков на маленьких экранах */
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .service-item {
+        padding: 15px;
+    }
+
+    .service-item p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .service-image, .service-image-inline, .service-image-flex {
+        width: 100%;
+        height: auto;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Стили для кнопки "Наверх" */
+@media (max-width: 768px) {
+    #back-to-top {
+        display:none;
+    }
+}
+
