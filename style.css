@@ -1,0 +1,595 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F1F8FF;
+}
+
+/* Меню */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4888cc; /* Синий фон меню */
+    padding: 15px 20px;  /* Добавлен отступ слева и справа */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px; /* Добавляем отступ справа */
+}
+
+.fixed-nav .logo {
+    display: flex;
+    align-items: center;
+}
+
+.fixed-nav .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.fixed-nav .logo span {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.fixed-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 15px; /* Добавим пространство между пунктами меню */
+}
+
+.fixed-nav ul li {
+    margin: 0;
+}
+
+.fixed-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.fixed-nav .contact-info {
+    color: white;
+    font-size: 18px;
+}
+
+.fixed-nav .contact-info a {
+    color: white;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+/* Блок "Баннер" */
+#banner {
+    background: url('banner2.avif') no-repeat center center;
+    background-size: cover;
+    padding: 150px 20px;
+    color: white;
+    text-align: center;
+}
+
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* чтобы не ломалось на узких экранах */
+}
+
+.banner-box {
+    background-color: rgba(255, 255, 255, 0.15); /* Полупрозрачный фон */
+    padding: 30px 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px); /* Для поддержки размытия */
+}
+
+.banner-box h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.banner-box p {
+    font-size: 16px;
+    color: #eee;
+    margin-bottom: 25px;
+}
+
+/* Кнопки */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    padding: 10px 25px;
+    background-color: white;
+    color: #7b1fa2;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7b1fa2;
+    color: white;
+}
+
+/* Окружность для орбиты */
+.orbit {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.earth {
+    position: absolute;
+    top: 0%;
+    left: 2%;
+    transform: translate(-50%, -50%);
+    width: 200px; /* Размер Земли */
+    height: 200px;
+    animation: spin 5s infinite linear;
+}
+
+.airplane {
+    position: absolute;
+    top: 60%;
+    right: 130%;
+    transform-origin: 170px 0; /* Центр орбиты для самолета */
+    width: 30px;
+    height: 30px;
+    animation: orbitAnimation 5s infinite linear;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes orbitAnimation {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Правая колонка с анимацией */
+.right-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.animate-img {
+    width: 80px;
+    height: 80px;
+    animation: spin 5s infinite linear;
+}
+
+/* Оставшиеся стили для разделов */
+section {
+    padding: 50px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Стили для секции "Индивидуальные туры" */
+#service-1 {
+    padding: 50px 20px;
+    background-color: #D1E8E2; 
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    clear: both;  /* Очистка для float */
+    margin-top: 30px;
+    text-align: justify;  /* Выровнять текст по ширине */
+}
+
+.service-image {
+    float: left;
+    margin-right: 20px;
+    width: 300px;  /* Размер картинки */
+    height: 200px; /* Высота картинки */
+    object-fit: cover; /* Картинка будет обрезаться по пропорциям */
+    border-radius: 10px; /* Скругленные углы */
+}
+
+.service-item p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Стили для выделенных элементов в тексте */
+.highlight {
+    font-weight: bold;
+    color: #007BFF; /* Цвет для выделенного текста */
+}
+
+
+/* Стили для секции "Приключенческие маршруты" */
+#services-2 {
+    padding: 50px 20px;
+    background-color: #FFEBEE; /* Мягкий розовый фон */
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Секция с картинкой справа и текстом слева, используя inline-block */
+.service-item-inline {
+    display: inline-block;
+    margin-top: 30px;
+    overflow: hidden;  /* Обеспечим, чтобы картинка и текст не выходили за пределы */
+}
+
+/* Стили для текста */
+.service-text {
+    display: inline-block;
+    width: 60%; /* Ширина текста */
+    text-align: justify; /* Выровнять текст по ширине */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+    padding-right: 30px; /* Отступ справа */
+}
+
+.service-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Стили для изображения */
+.service-image-inline {
+    display: inline-block;
+    width: 35%; /* Размер картинки */
+    height: auto;
+    object-fit: cover; /* Обрезка картинки по пропорциям */
+    border-radius: 10px;
+    vertical-align: top; /* Выравнивание картинки по верхнему краю */
+}
+
+/* Стили для выделенных элементов в тексте */
+.highlight {
+    font-weight: bold;
+    color: #007BFF; /* Синий цвет для выделенного текста */
+}
+
+/* Адаптивность для мобильных экранов */
+@media (max-width: 768px) {
+    .service-item-inline {
+        text-align: center; /* Центрируем содержимое на мобильных устройствах */
+    }
+
+    .service-text {
+        width: 100%; /* Убираем ширину и центрируем текст */
+        margin-bottom: 20px;
+        text-align: center; /* Центрируем текст на мобильных устройствах */
+    }
+
+    .service-image-inline {
+        width: 80%; /* Увеличиваем размер изображения на мобильных устройствах */
+    }
+}
+
+
+/* Стили для секции "Путешествуйте к своей мечте" */
+#services-3 {
+    padding: 50px 20px;
+    background-color: #f9ffc0; /* Мягкий розовый фон */
+    text-align: center;
+}
+
+.service-item-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px; /* Добавляем отступ между картинкой и текстом */
+    flex-wrap: nowrap; /* Запрещаем перенос на новую строку */
+}
+
+.service-text {
+    text-align: left;
+    width: 60%; /* Ширина текста */
+}
+
+.service-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.service-image-flex {
+    width: 40%; /* Размер картинки */
+    height: auto;
+    object-fit: cover; /* Обрезка картинки по пропорциям */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для изображения */
+}
+
+.highlight {
+    font-weight: bold;
+    color: #007BFF; /* Синий цвет для выделенного текста */
+}
+
+/* Адаптивность для мобильных экранов */
+@media (max-width: 768px) {
+    .service-item-flex {
+        flex-direction: column; /* Изменяем направление на колонку на мобильных устройствах */
+        align-items: center;
+    }
+
+    .service-text {
+        width: 100%; /* Убираем ширину и центрируем текст */
+        margin-bottom: 20px;
+        text-align: center; /* Центрируем текст на мобильных устройствах */
+    }
+
+    .service-image-flex {
+        width: 80%; /* Увеличиваем размер изображения на мобильных устройствах */
+    }
+}
+
+/* Новости */
+#news {
+    background-color: #E0F7FA; /* Светлый фон */
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.news-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Отступ между колонками */
+    flex-wrap: wrap; /* Делаем контейнер отзывчивым */
+}
+
+.news-item {
+    background-color: #ffffff; /* Белый фон для каждой новости */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: calc(25% - 20px); /* Каждая новость занимает треть контейнера */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* Устанавливаем одинаковую высоту для всех новостей */
+}
+
+.news-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.news-item h2 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+.news-item p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.news-item .button {
+    padding: 10px 20px;
+    background-color: #33B5E5; /* Голубой для кнопок */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.news-item .button:hover {
+    background-color: #007BFF; /* Синий при наведении */
+}
+
+/* Адаптивность: на малых экранах (до 768px) */
+@media (max-width: 768px) {
+    .news-item {
+        width: calc(50% - 20px); /* 2 колонки на экранах меньше 768px */
+    }
+}
+
+@media (max-width: 480px) {
+    .news-item {
+        width: 100%; /* 1 колонка на экранах меньше 480px */
+    }
+}
+
+/* Основные стили для секции контактов */
+#contacts {
+    padding: 50px 20px;
+    background-color: #F1F8FF; /* Мягкий фон */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Контейнер для формы и карты */
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Стили для формы */
+.contact-form {
+    width: 50%; /* Задаем ширину для формы */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding-right: 20px; /* Добавляем отступ справа */
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+.contact-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%; /* Задаем полям 100% ширины внутри контейнера */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Чтобы отступы не выходили за пределы контейнера */
+}
+
+/* Устанавливаем ограничение для поля textarea */
+.contact-form textarea {
+    resize: vertical; /* Разрешаем растягивать только по вертикали */
+    min-height: 150px; /* Минимальная высота */
+}
+
+/* Отступ справа для кнопки отправки */
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    box-sizing: border-box; /* Учитываем padding в ширину */
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Стили для карты */
+.contact-map {
+    width: 50%; /* Задаем ширину для карты */
+    height: 520px; /* Фиксированная высота карты */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Адаптивность для мобильных экранов */
+@media (max-width: 768px) {
+    .contact-content {
+        flex-direction: column; /* Размещаем форму и карту вертикально */
+        align-items: center;
+    }
+
+    .contact-form {
+        width: 100%; /* Форма занимает всю ширину на мобильных устройствах */
+    }
+
+    .contact-map {
+        width: 100%; /* Карта занимает всю ширину на мобильных устройствах */
+    }
+}
+
+/* Стили для кнопки "Наверх" */
+#back-to-top {
+    position: fixed; /* Фиксированное положение */
+    bottom: 20px; /* Расположить внизу страницы */
+    right: 20px; /* Расположить справа */
+    background-color: #007BFF; /* Синий фон кнопки */
+    color: white; /* Белый цвет иконки */
+    font-size: 24px; /* Размер иконки */
+    padding: 15px;
+    border-radius: 50%; /* Круглая кнопка */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer; /* Курсор-указатель при наведении */
+    transition: background-color 0.3s ease; /* Плавное изменение фона при наведении */
+    z-index: 1000; /* Обеспечиваем, чтобы кнопка была поверх всего контента */
+}
+
+#back-to-top:hover {
+    background-color: #0056b3; /* Синий цвет при наведении */
+    transform: scale(1.1); /* Увеличение размера кнопки при наведении */
+}
+
+/* Иконка внутри кнопки */
+#back-to-top i {
+    font-size: 24px; /* Размер иконки */
+}
+
+
+/* Футер */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
